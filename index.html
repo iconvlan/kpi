@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <div class="flex h-screen w-full items-center justify-center">
+        <div class="space-y-8">
+          <form class="flex flex-col items-center space-y-4">
+            <div class="grid w-full max-w-sm items-center gap-1.5">
+              <label class="text-sm font-medium leading-none" for="file">Upload File</label>
+              <input type="file" id="file-input" accept=".txt" onchange="readFile()" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+            </div>
+            <button disabled type="button" onclick="sendData()" class="inline-flex items-center bg-[#333] justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-[#F9F6EE] hover:bg-primary/90 h-10 px-4 py-2 w-full max-w-sm">Submit</button>
+          </form>
+          <div class="flex gap-1">
+            <div class="border rounded-lg shadow-sm w-1/2">
+                <div id="container-1" class="relative w-full overflow-auto">
+                    <table id="table-container-1" class="w-full caption-bottom text-sm">
+                        <thead>
+                        <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">No Tiket <span id="ctr-tiket"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="border rounded-lg shadow-sm w-1/2">
+                <div id="container-2" class="relative w-full overflow-auto">
+                    <table id="table-container-2" class="w-full caption-bottom text-sm">
+                        <thead>
+                        <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                            <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">No Pelanggan <span id="ctr-cust"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+      </div>
+    <script src="automate.js"></script>
+</body>
+</html>
