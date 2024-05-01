@@ -1,9 +1,9 @@
 // =================================================================
-const realGoogleFormID = "1FAIpQLSeuB1-CFJ11c23UcP5roXA1h8hyNKLQ_bvVns_j-jz2H_KnOQ";
-const entryFullname = "1033052293"  // entry nama lengkap
-const entryShift = "316862528"  // entry shift
-const entryAnalisa = "189925439"  // entry analisa
-const entryEvidence = "949547379"  // entry evidence
+const realGoogleFormID = "1FAIpQLSei4MssNeApbOFkPeFMigpsY7NxJxkJ4xGUKXWWZyvILSF6qA";
+const entryFullname = "2013590127"  // entry nama lengkap
+const entryShift = "116997613"  // entry shift
+const entryAnalisa = "1151382872"  // entry analisa
+const entryEvidence = "893076951"  // entry evidence
 // =================================================================
 
 
@@ -74,8 +74,8 @@ function sendData() {
   const timeShift = `entry.${entryShift}=${setShift.toUpperCase()}`;
   const promises = splitData.map((data) => {
     const analisa = isIDCustomer(data)
-      ? `entry.${entryAnalisa}=GRUP`
-      : `entry.${entryAnalisa}=TIKET`;
+      ? `entry.${entryAnalisa}=GROUP WAG`
+      : `entry.${entryAnalisa}=TICKET`;
     const evidence = `entry.${entryEvidence}=${data}`;
 
     return fetch(
