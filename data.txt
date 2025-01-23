@@ -1,1 +1,27 @@
-00000015,CS354,00000024,00000234,CS444,0000045
+ReadMe!!
+
+- suatu saat ketika full response nya (100k response)
+- bikin spreadsheet baru dan form inputan baru
+- share spreadsheet nya ke neural-pattern ini : smilersmiler251@neural-pattern-418316.iam.gserviceaccount.com
+- pindahin destinasi automate nya ke ss yg baru
+
+step 1 :
+login email yg di pake
+- buka/bikin form inputan yg baru
+- test dulu input 1 1 udah masuk ke ss response atau belum
+
+step 2 :
+- klik tombol setting / titik 3 di kanan atas
+- kilk form pre-filled / pra pengisian
+- isi inputannya , kemudian dapatkan link !
+- salin link nya , copas ke notepad
+
+step 3 :
+ubah data entry berikut sesuai dengan link yg baru
+// =================================================================
+const realGoogleFormID = "1FAIpQLSei4MssNeApbOFkPeFMigpsY7NxJxkJ4xGUKXWWZyvILSF6qA";
+const entryFullname = "2013590127"  // entry nama lengkap
+const entryShift = "116997613"  // entry shift
+const entryAnalisa = "1151382872"  // entry analisa
+const entryEvidence = "893076951"  // entry evidence
+// =================================================================
