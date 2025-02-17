@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="btn-theme" onclick="toggleTheme()">
+            <img id="theme-icon" src="assets/light.svg" alt="Light Theme" width="30" height="30">
+        </div>
+        <div class="form-wrapper">
+            <form class="form">
+                <div class="input-group">
+                    <label for="file">Upload File</label>
+                    <input type="file" id="file-input" accept=".txt" onchange="readFile()">
+                </div>
+                <button disabled type="button" onclick="sendData()">Submit</button>
+            </form>
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <div id="container-1">
+                        <table id="table-container-1">
+                            <thead>
+                                <tr>
+                                    <th>Group Non Merge <span id="ctr-tiket"></span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div id="container-1">
+                        <table id="table-container-2">
+                            <thead>
+                                <tr>
+                                    <th>Group Merge <span id="ctr-tiket"></span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div id="container-2">
+                        <table id="table-container-3">
+                            <thead>
+                                <tr>
+                                    <th>Tiket Non Merge <span id="ctr-cust"></span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <div id="container-2">
+                        <table id="table-container-4">
+                            <thead>
+                                <tr>
+                                    <th>Tiket Merge <span id="ctr-cust"></span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="automate.js"></script>
+</body>
+
+</html>
