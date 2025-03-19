@@ -1,10 +1,10 @@
 // =================================================================
 const realGoogleFormID =
-  "1FAIpQLSf_uo7kvr-S1t45_jLGcOr7ST5SQWURnXwbfWvlp-QQQe5hbQ";
-const entryFullname = "2013590127"; // entry nama lengkap
-const entryShift = "116997613"; // entry shift
-const entryAnalisa = "1151382872"; // entry analisa
-const entryEvidence = "893076951"; // entry evidence
+  "1FAIpQLSfLjGgKq1Obwgq3q3F3UPVU76yr0awg-ghwkfeLIbIHj_nNmw";
+const entryFullname = "1821529433"; // entry nama lengkap
+const entryShift = "1638496274"; // entry shift
+const entryAnalisa = "306310132"; // entry analisa
+const entryEvidence = "363500341"; // entry evidence
 // =================================================================
 
 let setName = "";
