@@ -101,37 +101,34 @@ function sendData() {
     .toUpperCase()
     .replace(/ /g, "+")}`;
   const timeShift = `entry.${entryShift}=${setShift.toUpperCase()}`;
-  const promises = splitData.map((data) => {
-    const analisa = generateAnalisa(data);
-    const evidence = `entry.${entryEvidence}=${data.replace(/-/g, "")}`;
-    console.log(
-      `https://docs.google.com/forms/d/e/${realGoogleFormID}/formResponse?usp=pp_url&${fullName}&${timeShift}&${analisa}&${evidence}`
-    );
-    return fetch(
-      `https://docs.google.com/forms/d/e/${realGoogleFormID}/formResponse?usp=pp_url&${fullName}&${timeShift}&${analisa}&${evidence}`,
-      { mode: "no-cors" }
-    )
-      .then((response) => {
-        percentage += incremental;
-        document.querySelector("button").textContent = `${percentage}%`;
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  splitData.forEach((data, index) => {
+    setTimeout(() => {
+      const analisa = generateAnalisa(data);
+      const evidence = `entry.${entryEvidence}=${data.replace(/-/g, "")}`;
+      const url = `https://docs.google.com/forms/d/e/${realGoogleFormID}/formResponse?usp=pp_url&${fullName}&${timeShift}&${analisa}&${evidence}`;
+
+      console.log(`Mengirim data ke-${index + 1}: ${url}`);
+
+      fetch(url, { mode: "no-cors" })
+        .then(() => {
+          percentage += incremental;
+          document.querySelector("button").textContent = `${Math.round(
+            percentage
+          )}%`;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }, index * 1000); // Delay 500ms per request
   });
 
-  Promise.all(promises)
-    .then(() => {
-      console.log("All promises done");
-      document.querySelector("button").textContent = "Done !";
-      setTimeout(() => {
-        reset();
-      }, 500);
-    })
-    .catch((error) => {
-      console.error("One or more promises failed:", error);
-      alert("Terjadi Kesalahan");
-    });
+  setTimeout(() => {
+    console.log("Semua data terkirim");
+    document.querySelector("button").textContent = "Done !";
+    setTimeout(() => {
+      reset();
+    }, 500);
+  }, splitData.length * 1000); // Gunakan 1000ms sesuai delay request
 }
 
 function reset() {
