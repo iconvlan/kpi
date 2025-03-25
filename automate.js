@@ -97,11 +97,10 @@ function sendData() {
   document.querySelector("button").disabled = true;
   let percentage = 0;
   const incremental = 100 / splitData.length;
-  const fullName = `entry.${entryFullname}=${setName
-    .toUpperCase()
-    .replace(/ /g, "+")}`;
+  const fullName = `entry.${entryFullname}=${setName.toUpperCase().replace(/ /g, "+")}`;
   const timeShift = `entry.${entryShift}=${setShift.toUpperCase()}`;
-  splitData.forEach((data, index) => {
+
+  function sendRequest(data, index, retry = 0) {
     setTimeout(() => {
       const analisa = generateAnalisa(data);
       const evidence = `entry.${entryEvidence}=${data.replace(/-/g, "")}`;
@@ -112,23 +111,30 @@ function sendData() {
       fetch(url, { mode: "no-cors" })
         .then(() => {
           percentage += incremental;
-          document.querySelector("button").textContent = `${Math.round(
-            percentage
-          )}%`;
+          document.querySelector("button").textContent = `${Math.round(percentage)}%`;
+          console.log(`✅ Data ke-${index + 1} berhasil terkirim.`);
         })
         .catch((error) => {
-          console.error("Error:", error);
+          console.error(`❌ Error mengirim data ke-${index + 1}, percobaan ke-${retry + 1}:`, error);
+          if (retry < 2) {  // Coba ulang maksimal 3 kali
+            console.log(`🔄 Mengulang pengiriman data ke-${index + 1}...`);
+            sendRequest(data, index, retry + 1);
+          } else {
+            console.error(`🚨 Gagal mengirim data ke-${index + 1} setelah 3 kali percobaan.`);
+          }
         });
-    }, index * 1000); // Delay 500ms per request
-  });
+    }, index * 1000); // Delay 2 detik per request (lebih aman dari rate limit)
+  }
+
+  splitData.forEach((data, index) => sendRequest(data, index));
 
   setTimeout(() => {
-    console.log("Semua data terkirim");
-    document.querySelector("button").textContent = "Done !";
+    console.log("✅ Semua data diproses. Halaman akan di-refresh.");
+    document.querySelector("button").textContent = "Done!";
     setTimeout(() => {
-      reset();
-    }, 500);
-  }, splitData.length * 1000); // Gunakan 1000ms sesuai delay request
+      location.reload();
+    }, 1000);
+  }, splitData.length * 1000 + 1000);
 }
 
 function reset() {
